@@ -1,0 +1,11 @@
+.kumparan-header {
+  background: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 15px 0 12px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.kumparan-header img {
+  height: 30px;
+}

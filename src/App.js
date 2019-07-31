@@ -1,12 +1,14 @@
 import React from 'react';
+// components
+import Header from './components/Header/Header';
+// static assets
+import logo from './assets/images/logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Test</h1>
-      </header>
+      <Header logo={logo} />
     </div>
   );
 }
