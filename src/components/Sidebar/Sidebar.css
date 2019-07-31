@@ -1,0 +1,16 @@
+.kumparan-widget {
+  background: #ffffff; 
+  border: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+}
+
+.kumparan-widget .widget-title {
+  padding: 20px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.kumparan-widget .widget-title h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
