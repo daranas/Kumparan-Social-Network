@@ -4,6 +4,8 @@ import userDefault from '../../assets/images/user.png';
 import './Post.css';
 
 const Post = (props) => {
+  // console.log(props);
+  
   return (
     props.data.map(post =>
     <div className="post-bar" key={post.id}>

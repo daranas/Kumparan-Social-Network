@@ -39,14 +39,14 @@ class Sidebar extends React.Component {
     this.setState({ userInfo: userParam })
   }
 
-  componentDidUpdate(previousProps) {
+  async componentDidUpdate(previousProps) {
     const { users, location: { pathname } } = this.props;
     if (previousProps.location.pathname !== pathname) {
       this.getDetailUser(users, pathname);
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { userDefault } = this.state;
     this.setState({ userInfo: userDefault })
   }
