@@ -1,6 +1,7 @@
 import React from 'react';
 import Users from '../Users/Users';
 import { withRouter } from 'react-router-dom';
+import profilePict from '../../assets/images/user.png';
 import './Sidebar.css';
 
 class Sidebar extends React.Component {
@@ -9,7 +10,7 @@ class Sidebar extends React.Component {
     super(props);
     this.state = {
       userDefault: {
-        name: 'Darana SV',
+        name: 'DaranaSV',
         position: 'Kandidat Front-ent Engineer @kumparan'
       },
       userInfo: {}
@@ -56,7 +57,17 @@ class Sidebar extends React.Component {
     
     return (
       <aside>
-        <h4>{userInfo.name}</h4>
+        <div className="user-profile">
+          <div className="user-bg">
+            <div className="user-pict">
+              <img src={profilePict} alt="" />
+            </div>
+          </div>
+          <div className="user-specs">
+            <h3>{userInfo.name}</h3>
+            <span>{userInfo.position}</span>
+          </div>
+        </div>
         <div className="kumparan-widget">
           <div className="widget-title">
             <h3>Daftar Pengguna</h3>
