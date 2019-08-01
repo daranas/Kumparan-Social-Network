@@ -1,7 +1,11 @@
 import React from 'react';
 import API from '../../helpers/API';
+import { Route } from "react-router-dom";
+import './Main.css';
 // components
 import Sidebar from '../Sidebar/Sidebar';
+import Posts from '../Posts/Posts';
+import User from '../User/User';
 
 class Main extends React.Component {
   constructor(props) {
@@ -30,7 +34,8 @@ class Main extends React.Component {
               users={users} />
           </div>
           <div className="col-8">
-            <h1>Main</h1>
+            <Route path="/" exact component={Posts} />
+            <Route path="/user/:id" component={User} />
           </div>
         </div>
       </div>

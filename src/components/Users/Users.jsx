@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import userDefault from '../../assets/images/user.png';
 import './Users.css';
 
 const Users = (props) => {
   return (
     <div className="user-listing">
-      <Router>
-        {props.data.map(user =>
-        <Link to="/" key={user.id}>
+      {props.data.map(user =>
+      <Link to={`/user/${user.id}`} key={user.id}>
         <div className="user-list clearfix">
           <img src={userDefault} alt="" />
           <div className="user-name">
@@ -17,9 +16,8 @@ const Users = (props) => {
           </div>
           <span><i>&raquo;</i></span>
         </div>
-        </Link>
-        )}
-      </Router>
+      </Link>
+      )}
     </div>
   )
 }
