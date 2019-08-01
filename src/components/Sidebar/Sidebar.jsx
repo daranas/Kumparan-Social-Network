@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
 
   getDetailUser = (user, param) => {
     const { userDefault } = this.state;
-    let userId = param.split("/").pop();
+    let userId = param.split(/\//)[2];
     let userParam = {
       name: '',
       position: ''

@@ -3,6 +3,7 @@ import API from '../../helpers/API';
 import { Route, NavLink } from "react-router-dom";
 // components
 import Post from '../Post/Post';
+import Albums from '../Albums/Albums';
 import './User.css';
 
 class User extends React.Component {
@@ -11,7 +12,8 @@ class User extends React.Component {
 
     this.state = {
       user: {},
-      posts: []
+      posts: [],
+      albums: []
     }
   }
 
@@ -34,6 +36,13 @@ class User extends React.Component {
     });
   }
 
+  fetchAlbumData = (id) => {
+    API.get(`/albums?userId=${id}`).then(res => {
+      let albums = res.data;
+      this.setState({ albums });
+    });
+  }
+
   async componentDidUpdate(previousProps) {
     const { location: { pathname }, match: { params } } = this.props;
     if (previousProps.location.pathname !== pathname) {
@@ -41,6 +50,7 @@ class User extends React.Component {
       let user = getUser.data;
       this.setState({ user });
       this.fetchPostData(params.id);
+      this.fetchAlbumData(params.id);
     }
   }
 
@@ -53,7 +63,7 @@ class User extends React.Component {
   }
 
   render() {
-    const { user, posts } = this.state;
+    const { user, posts, albums } = this.state;
     return (
       <div className="user-panel">
         <ul className="nav nav-pills nav-kumparan clearfix">
@@ -61,16 +71,20 @@ class User extends React.Component {
             <NavLink className="nav-link" to={`/user/${user.id}`} exact activeClassName="active">Post</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/album" activeClassName="active">Album Foto</NavLink>
+            <NavLink className="nav-link" to={`/user/${user.id}/albums`} activeClassName="active">Album Foto</NavLink>
           </li>
         </ul>
 
         <Route
+          exact
           path='/user/:id'
           component={() => <Post data={posts} />}
         />
+        <Route
+          path='/user/:id/albums'
+          component={() => <Albums data={albums} />}
+        />
       </div>
-      // <h1>User {this.props.match.params.id}</h1>
     );
   }
 }
