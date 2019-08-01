@@ -4,6 +4,7 @@ import { Route, NavLink } from "react-router-dom";
 // components
 import Post from '../Post/Post';
 import Albums from '../Albums/Albums';
+import Photos from '../Photos/Photos';
 import './User.css';
 
 class User extends React.Component {
@@ -13,7 +14,8 @@ class User extends React.Component {
     this.state = {
       user: {},
       posts: [],
-      albums: []
+      albums: [],
+      photos: []
     }
   }
 
@@ -43,6 +45,13 @@ class User extends React.Component {
     });
   }
 
+  fetchPhotosData = (id) => {
+    API.get(`/photos?albumId=${id}`).then(res => {
+      let photos = res.data;
+      this.setState({ photos });
+    });
+  }
+
   async componentDidUpdate(previousProps) {
     const { location: { pathname }, match: { params } } = this.props;
     if (previousProps.location.pathname !== pathname) {
@@ -51,6 +60,7 @@ class User extends React.Component {
       this.setState({ user });
       this.fetchPostData(params.id);
       this.fetchAlbumData(params.id);
+      this.fetchPhotosData(params.id);
     }
   }
 
@@ -63,7 +73,7 @@ class User extends React.Component {
   }
 
   render() {
-    const { user, posts, albums } = this.state;
+    const { user, posts, albums, photos } = this.state;
     return (
       <div className="user-panel">
         <ul className="nav nav-pills nav-kumparan clearfix">
@@ -83,6 +93,10 @@ class User extends React.Component {
         <Route
           path='/user/:id/albums'
           component={() => <Albums data={albums} />}
+        />
+        <Route
+          path='/user/:id/photos/:albumId'
+          component={() => <Photos data={photos} />}
         />
       </div>
     );
