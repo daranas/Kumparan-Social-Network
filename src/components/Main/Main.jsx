@@ -12,8 +12,7 @@ class Main extends React.Component {
     super(props);
 
     this.state = {
-      users: [],
-      userDetail: {}
+      users: []
     }
   }
 
@@ -24,14 +23,12 @@ class Main extends React.Component {
   }
 
   render() {
-    const { users, userDetail } = this.state;
+    const { users } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-4">
-            <Sidebar 
-              detail={userDetail}
-              users={users} />
+            <Sidebar users={users} />
           </div>
           <div className="col-8">
             <Route path="/" exact component={Posts} />

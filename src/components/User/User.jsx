@@ -12,6 +12,7 @@ class User extends React.Component {
 
   async componentDidMount() {
     const { match: { params } } = this.props;
+    // get user
     let getUser = await API.get(`/users/${params.id}`);
     let user = getUser.data;
     this.setState({ user });
