@@ -89,8 +89,8 @@ class Posts extends React.Component {
     return (
       <div>
         <form action="" className="create-post" onSubmit={this.handleSubmit}>
-          <input type="text" name="postTitle" placeholder="Judul Artikel" />
-          <textarea name="postBody" placeholder="Apa yang Anda pikirkan?"></textarea>
+          <input type="text" name="postTitle" placeholder="Judul Artikel" required />
+          <textarea name="postBody" placeholder="Apa yang Anda pikirkan?" required></textarea>
           <button type="submit">submit</button>
         </form>
         <h3 className="page-title">Post Terbaru</h3>
