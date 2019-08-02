@@ -1,6 +1,6 @@
 .user-listing {
   padding: 10px 0 20px;
-  height: 370px;
+  height: 410px;
   overflow: auto;
 }
 
@@ -40,7 +40,7 @@
 
 .user-list > span {
   position: absolute;
-  top: 25px;
+  top: 22px;
   right: 16px;
   background: #ffffff;
 }
@@ -53,5 +53,5 @@
   border: 1px solid #e5e5e5;
   border-radius: 2px;
   text-align: center;
-  line-height: 18px;
+  line-height: 16px;
 }
