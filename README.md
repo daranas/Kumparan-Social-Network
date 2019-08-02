@@ -1,8 +1,6 @@
-Application was made by components that are modular / structured.
-
-So it's easy to understand and easy to develop (low coupling between modules),
-
 Open [https://kumparan-social-network.herokuapp.com/](https://kumparan-social-network.herokuapp.com/) to see demo.
+
+Application was made by components that are modular / structured. So it's easy to understand and easy to develop (low coupling between modules)
 
 ### Available Features
 - Responsive design
@@ -28,6 +26,8 @@ Open [https://kumparan-social-network.herokuapp.com/](https://kumparan-social-ne
 │  │  ├─ Sidebar/    # To display sidebar widget
 │  │  ├─ User/       # To list of user
 │  │  └─ Users/      # As container for user components
+│  │
+│  └─ helpers/       # Contains helpers for development purpose
 ```
 
   
