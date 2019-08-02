@@ -13,6 +13,19 @@ class PostDetail extends React.Component {
     }
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { comments } = this.state;
+    let comment = {
+      'id': Math.floor(Math.random() * 10),
+      'name': 'DaranaSV',
+      'body': e.target.commentBody.value
+    };
+
+    this.setState({ comments: comments.concat(comment) });
+  }
+
   async componentDidMount() {
     const { match: { params } } = this.props;
     let getPost = await API.get(`/posts/${params.id}`);
@@ -36,13 +49,13 @@ class PostDetail extends React.Component {
         </div>
         <div className="comment-wrapper">
           <h4>Komentar</h4>
-          <ul class="comments">
+          <ul className="comments">
           {comments.map(comment =>
             <li key={comment.id}>
-              <div class="comment">
-                <div class="comment-block">
-                  <div class="comment-arrow"></div>
-                  <span class="comment-by">
+              <div className="comment">
+                <div className="comment-block">
+                  <div className="comment-arrow"></div>
+                  <span className="comment-by">
                     <strong>{comment.name}</strong>
                   </span>
                   <p>{comment.body}</p>
@@ -51,6 +64,10 @@ class PostDetail extends React.Component {
             </li>
           )}
           </ul>
+          <form className="clearfix" onSubmit={this.handleSubmit}>
+            <textarea className="commentForm" name="commentBody"></textarea>
+            <button stype="submit" className="commentBtn">Submit</button>
+          </form>
         </div>
       </div>
     );
