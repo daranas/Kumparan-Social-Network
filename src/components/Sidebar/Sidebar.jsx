@@ -10,7 +10,7 @@ class Sidebar extends React.Component {
     this.state = {
       userDefault: {
         name: 'DaranaSV',
-        position: 'Kandidat Front-ent Engineer @kumparan'
+        position: 'Kandidat Front-end Engineer @kumparan'
       },
       userInfo: {}
     }
