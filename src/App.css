@@ -3,6 +3,11 @@
 *** DaranaSV (http://darana.id)
 **/
 
+*, ::after, ::before {
+  outline: none;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;

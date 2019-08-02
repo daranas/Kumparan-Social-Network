@@ -55,6 +55,28 @@ class Posts extends React.Component {
     this.fetchData(sumLength); 
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { posts } = this.state;
+    let post = {
+      'id': 1,
+      'userId': 1,
+      'userName': 'DaranaSV',
+      'title': e.target.postTitle.value,
+      'body': e.target.postBody.value
+    };
+
+    let setPost = JSON.parse(JSON.stringify(posts))
+    setPost[0] = post;
+    this.setState({
+      posts: setPost 
+    })
+
+    e.target.postTitle.value = '';
+    e.target.postBody.value = '';
+  }
+
   async componentDidMount() {
     let getUser = await API.get('/users');
     let users = getUser.data;
@@ -66,6 +88,11 @@ class Posts extends React.Component {
     const { posts, loading, hasMore } = this.state;
     return (
       <div>
+        <form action="" className="create-post" onSubmit={this.handleSubmit}>
+          <input type="text" name="postTitle" placeholder="Judul Artikel" />
+          <textarea name="postBody" placeholder="Apa yang Anda pikirkan?"></textarea>
+          <button type="submit">submit</button>
+        </form>
         <h3 className="page-title">Post Terbaru</h3>
         <InfiniteScroll
             dataLength={posts.length}

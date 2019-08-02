@@ -24,6 +24,7 @@ class PostDetail extends React.Component {
     };
 
     this.setState({ comments: comments.concat(comment) });
+    e.target.commentBody.value = '';
   }
 
   async componentDidMount() {
