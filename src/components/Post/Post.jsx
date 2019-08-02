@@ -4,8 +4,7 @@ import userDefault from '../../assets/images/user.png';
 import './Post.css';
 
 const Post = (props) => {
-  // console.log(props);
-  
+
   return (
     props.data.map(post =>
     <div className="post-bar" key={post.id}>
@@ -24,7 +23,7 @@ const Post = (props) => {
         <p>{post.body}</p>
       </div>
       <div className="post-footer">
-        <a href="/">selengkapnya &raquo;</a>
+        <Link to={`/user/${post.userId}/post/${post.id}`}>selengkapnya &raquo;</Link>
       </div>
     </div>
     )

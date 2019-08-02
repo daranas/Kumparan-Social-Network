@@ -5,7 +5,6 @@ import profilePict from '../../assets/images/user.png';
 import './Sidebar.css';
 
 class Sidebar extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -79,4 +78,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default withRouter(Sidebar)
+export default withRouter(Sidebar);

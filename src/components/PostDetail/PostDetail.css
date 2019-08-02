@@ -1,0 +1,58 @@
+.comment-bar h2 {
+  margin-top: 0;
+}
+
+.comment-bar h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.comment-wrapper {
+  padding: 20px;
+}
+
+ul.comments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.comments li {
+  clear: both;
+  padding: 10px 0 0 10px;
+}
+
+ul.comments li .comment {
+  margin-bottom: 10px;
+}
+
+ul.comments .comment-block {
+  background: #f7f7f7;
+  border-radius: 5px;
+  padding: 20px 20px;
+  position: relative;
+}
+
+ul.comments .comment-arrow {
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid #f7f7f7;
+  border-top: 12px solid transparent;
+  height: 0;
+  left: -12px;
+  position: absolute;
+  top: 12px;
+  width: 0;
+}
+
+ul.comments .comment-block .comment-by {
+  display: block;
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+ul.comments .comment-block p {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}

@@ -3,6 +3,7 @@ import API from '../../helpers/API';
 import { Route, NavLink } from "react-router-dom";
 // components
 import Post from '../Post/Post';
+import PostDetail from '../PostDetail/PostDetail';
 import Albums from '../Albums/Albums';
 import Photos from '../Photos/Photos';
 import './User.css';
@@ -14,8 +15,7 @@ class User extends React.Component {
     this.state = {
       user: {},
       posts: [],
-      albums: [],
-      photos: []
+      albums: []
     }
   }
 
@@ -45,22 +45,16 @@ class User extends React.Component {
     });
   }
 
-  fetchPhotosData = (id) => {
-    API.get(`/photos?albumId=${id}`).then(res => {
-      let photos = res.data;
-      this.setState({ photos });
-    });
-  }
-
   async componentDidUpdate(previousProps) {
     const { location: { pathname }, match: { params } } = this.props;
+    
     if (previousProps.location.pathname !== pathname) {
       let getUser = await API.get(`/users/${params.id}`);
       let user = getUser.data;
+      
       this.setState({ user });
       this.fetchPostData(params.id);
       this.fetchAlbumData(params.id);
-      this.fetchPhotosData(params.id);
     }
   }
 
@@ -73,7 +67,8 @@ class User extends React.Component {
   }
 
   render() {
-    const { user, posts, albums, photos } = this.state;
+    const { user, posts, albums } = this.state;
+    const { match } = this.props;
     return (
       <div className="user-panel">
         <ul className="nav nav-pills nav-kumparan clearfix">
@@ -81,7 +76,7 @@ class User extends React.Component {
             <NavLink className="nav-link" to={`/user/${user.id}`} exact activeClassName="active">Post</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to={`/user/${user.id}/albums`} activeClassName="active">Album Foto</NavLink>
+            <NavLink className="nav-link" to={`${match.url}/albums`} activeClassName="active">Album Foto</NavLink>
           </li>
         </ul>
 
@@ -91,12 +86,16 @@ class User extends React.Component {
           component={() => <Post data={posts} />}
         />
         <Route
-          path='/user/:id/albums'
+          path={`${match.path}/albums`}
           component={() => <Albums data={albums} />}
         />
         <Route
-          path='/user/:id/photos/:albumId'
-          component={() => <Photos data={photos} />}
+          path={`${match.path}/photos/:id`}
+          component={() => <Photos />}
+        />
+        <Route
+          path={`${match.path}/post/:id`}
+          component={() => <PostDetail />}
         />
       </div>
     );

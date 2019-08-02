@@ -1,23 +1,43 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import ModalImage from "react-modal-image";
+import API from '../../helpers/API';
 
-const Photos = props => {
+class Photos extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="row">
-      {props.data.map(photo =>
-      <div className="col-3" key={photo.id}>
-        <div className="grid-photo">
-          <ModalImage
-            small={photo.thumbnailUrl}
-            large={photo.url}
-            alt={photo.title}
-          />
+    this.state = {
+      photos: []
+    }
+  }
+
+  async componentDidMount() {
+    const { match: { params } } = this.props;
+    let getPhotos = await API.get(`/photos?albumId=${params.id}`);
+    let photos = getPhotos.data;
+
+    this.setState({ photos});
+  }
+
+  render() {
+    const { photos } = this.state;
+    return (
+      <div className="row">
+        {photos.map(photo =>
+        <div className="col-3" key={photo.id}>
+          <div className="grid-photo">
+            <ModalImage
+              small={photo.thumbnailUrl}
+              large={photo.url}
+              alt={photo.title}
+            />
+          </div>
         </div>
+        )}
       </div>
-      )}
-    </div>
-  );
+    );
+  }
 }
 
-export default Photos;
+export default withRouter(Photos);
